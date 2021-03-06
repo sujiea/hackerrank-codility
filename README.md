@@ -1,2 +1,2 @@
 # hackerrank-codility
-all about algorithm
+All about algorithm
