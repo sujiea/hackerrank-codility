@@ -7,8 +7,10 @@ def commonChild(s1, s2):
             if s1[i:i+1] == s2[j:j+1]:
                 matched[i+1][j+1] = matched[i][j] +1
             else:
-                matched[i+1][j+1] = max(matched[i][j+1], matched[i+1][j])
-
+                if matched[i][j+1] > matched[i+1][j]:
+                    matched[i+1][j+1] = matched[i][j+1]
+                else:
+                    matched[i + 1][j + 1] = matched[i+1][j]
     return matched[n][n]
 
 print(commonChild("HARRY","SALLY"))
