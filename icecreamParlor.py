@@ -1,14 +1,12 @@
+from collections import OrderedDict
 def icecreamParlor(m, arr):
-    arr.sort()
+    dist = {}
     for i in range(len(arr)):
-        if arr[i] >= m:
-            break
-        else:
-            j = arr.index(m-arr[i])
-            if j > i:
-                return [i, j]
+        if arr[i] < m:
+            if m - arr[i] in dist:
+                return [dist[m-arr[i]]+1, i + 1]
+            dist[arr[i]] = i
     return []
-
 
 print(icecreamParlor(4, [1, 4, 5, 3, 2]))
 print(icecreamParlor(4, [2, 2, 4, 3]))
