@@ -1,3 +1,12 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the bfs function below.
 from collections import defaultdict
 from heapq import heappop, heappush
 # Complete the shortestReach function below.
@@ -23,3 +32,22 @@ def shortestReach(n, edges, s):
     del result[0]
     del result[s-1]
     return [-1 if d == float("inf") else d for d in result]
+
+f = open("testcase.txt", "r")
+n = 20
+m = 54
+edges = dict()
+
+for _ in range(m):
+    u, v, w = map(int, f.readline().rstrip().split())
+    if (u, v) in edges:
+        edges[(u, v)] = min(edges[(u, v)], w)
+    elif (v, u) in edges:
+        edges[(v, u)] = min(edges[(v, u)], w)
+    else:
+        edges[(u, v)] = w
+
+s = 17
+result = shortestReach(n, edges, s)
+print(result)
+
